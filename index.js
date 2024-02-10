@@ -15,11 +15,15 @@ const csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0]
 const traget_id = document.querySelector("body > div.maincontainer > div > div.card.available > div.interact_container > button:nth-child(1)").attributes[3].value;
 const captcha_0 = document.getElementsByName("captcha_0")[0].value;
 let captcha_1 ;
+let captchaTime ;
+let time;
 
 const reservBtn = document.querySelector("#note_form > div.modal-body > img");
 
 reservBtn.addEventListener("click", () => {
-    captcha_1 = prompt("Please enter: ");
+    captchaTime = prompt("Please enter: ");
+    captcha_1 = captchaTime.split(":")[0];
+    time = captchaTime.split(":")[1];
     console.log(" > " + captcha_1);
     console.log(" > " + csrfmiddlewaretoken);
     console.log(" > " + traget_id);
