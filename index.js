@@ -12,7 +12,8 @@
 'use strict';
 
 const csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
-const traget_id = document.querySelector("body > div.maincontainer > div > div.card.available > div.interact_container > button:nth-child(1)").attributes[3].value;
+const button_target = document.querySelector("body > div.maincontainer > div > div.card.available > div.interact_container > button:nth-child(1)");
+const traget_id = button_target ? button_target.attributes[3].value : null;
 const captcha_0 = document.getElementsByName("captcha_0")[0].value;
 const reservBtn = document.querySelector("#note_form > div.modal-body > img");
 let captcha_1 ;
@@ -21,9 +22,9 @@ let time;
 let timeToRun = new Date();
 let divs = document.querySelectorAll('.card:not(.locked)');
 
-for(let div in divs)
+for(let i = 0; i < divs.length(); i++)
 {
-    console.log(div)
+    console.log(divs[i]);
 }
 
 reservBtn.addEventListener("click", () => {
@@ -34,7 +35,7 @@ reservBtn.addEventListener("click", () => {
 });
 
 let interval = setInterval(()=>{
-    if(time == timeToRun.getHours())
+    if(time == timeToRun.getHours() || captchaTime[1] == null)
     {
         clearInterval(interval);
         fetchMe();
