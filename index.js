@@ -13,7 +13,7 @@
 
 const csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
 const button_target = document.querySelector("body > div.maincontainer > div > div.card.available > div.interact_container > button:nth-child(1)");
-const traget_id = button_target ? button_target.attributes[3].value : null;
+let traget_id = button_target ? button_target.attributes[3].value : null;
 const captcha_0 = document.getElementsByName("captcha_0")[0].value;
 const reservBtn = document.querySelector("#note_form > div.modal-body > img");
 let captcha_1 ;
@@ -24,26 +24,34 @@ let divs = document.querySelectorAll('.card:not(.locked)');
 
 for(let i = 0; i < divs.length; i++)
 {
-    console.log(divs[i]);
+    console.log(divs[i].querySelector(".place").innerText.includes("Martil", "Ahriq"));
+  if(divs[i].querySelector(".place").innerText.includes("Martil", "Ahriq"))
+  {
+    traget_id = divs[i].querySelector("div.card.available > div.interact_container > button:nth-child(1)")? divs[i].querySelector("div.card.available > div.interact_container > button:nth-child(1)").attributes[3].value : null;
+  }
+   else{
+      traget_id = null;
+   }
 }
-
+console.log("-------------------");
 reservBtn.addEventListener("click", () => {
     captchaTime = prompt("Please enter: ");
+    console.log(captchaTime);
     captcha_1 = captchaTime.split(":")[0];
     time = captchaTime.split(":")[1];
-   
+
 });
 
 let interval = setInterval(()=>{
-    if(time == timeToRun.getHours() || time == null)
+    if(time == timeToRun.getHours())
     {
         clearInterval(interval);
         fetchMe();
     }
 },10);
 
-function fetchMe()
-{
+function fetchMe(){
+
     console.log("fetching");
     console.log(`target id ${traget_id} | token ${csrfmiddlewaretoken} | captcha0 ${captcha_0} | captcha1 ${captcha_1} | time : ${time}`);
     setTimeout(() => {
@@ -75,4 +83,3 @@ function fetchMe()
 }
 
 console.log("Script is running ...");
-
