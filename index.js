@@ -22,7 +22,7 @@ let time;
 let timeToRun = new Date();
 let divs = document.querySelectorAll('.card:not(.locked)');
 
-for(let i = 0; i < divs.length(); i++)
+for(let i = 0; i < divs.length; i++)
 {
     console.log(divs[i]);
 }
@@ -35,7 +35,7 @@ reservBtn.addEventListener("click", () => {
 });
 
 let interval = setInterval(()=>{
-    if(time == timeToRun.getHours() || captchaTime[1] == null)
+    if(time == timeToRun.getHours() || time == null)
     {
         clearInterval(interval);
         fetchMe();
