@@ -1,0 +1,24 @@
+{
+  "name": "busreservation",
+  "version": "1.0.0",
+  "description": "bus reservation tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haguezoum/busReservation.git"
+  },
+  "keywords": [
+    "bus",
+    "taxista",
+    "botfonast"
+  ],
+  "author": "Hassan Aguezoum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haguezoum/busReservation/issues"
+  },
+  "homepage": "https://github.com/haguezoum/busReservation#readme"
+}
