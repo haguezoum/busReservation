@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:48:38 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/29 12:46:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/29 13:59:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ imageContainer.style.alignItems = "center";
 
 let cookies = 'login_state=5RDUM953SFFF95M7G5WDH1Q; csrftoken=WgujQBJ9y9bi5cYWyGDu3KueMa7aVaXv; sessionid=543tbr724aw5dro62z4lvzhucxfindj0';
 let csrfmiddlewaretoken;
-let captTamzwarot;
 let captcha_0;
-let texto;
-
+let time = new Date();
 
 
 async function fetchImage() {
@@ -55,6 +53,7 @@ async function placeImage() {
     image.style.width = "150px";
     image.style.position = "absolute";
     image.style.top = "10%";
+    image.style.zIndex = "1000";
     image.style.left = "50%";
     image.style.transform = "translate(-50%, -50%)";
     image.style.border = "1px solid #000";
@@ -70,6 +69,7 @@ function placeInput() {
     input.classList.add("takcholt");
     input.style.width = "150px";
     input.style.position = "absolute";
+    image.style.zIndex = "9999";
     input.style.top = "20%";
     input.style.left = "50%";
     input.style.transform = "translate(-50%, -50%)";
@@ -84,6 +84,9 @@ function placeInput() {
 }
 
 function getTaxi(texto) {
+    
+    let timeToReserve = texto.substring(0, 2) + ":" + texto.substring(2, 4) + ":00";
+    let interval = setInterval(() => {
     fetch("https://bus-med.1337.ma/create-reservation", {
         "headers": {
             Cookie: cookies,
@@ -107,7 +110,11 @@ function getTaxi(texto) {
         "mode": "cors",
         "credentials": "include"
     }).then(res => res.text()).then(console.log(`Done ✅ \n csrfmiddlewaretoken=${csrfmiddlewaretoken}&traget_id=50&captcha_0=${captcha_0}&captcha_1=${texto}`)).catch(err => console.error("Error: ", err));
-
+    if(timeToReserve == time )
+    {
+        clearInterval(interval);
+    }
+    }, 10);
 }
 
 placeImage();
