@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 09:48:38 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/01 11:30:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/01 11:31:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ imageContainer.style.display = "flex";
 imageContainer.style.justifyContent = "center";
 imageContainer.style.alignItems = "center";
 
-
-let cookies = 'login_state=5RDUM953SFFF95M7G5WDH1Q; csrftoken=WgujQBJ9y9bi5cYWyGDu3KueMa7aVaXv; sessionid=543tbr724aw5dro62z4lvzhucxfindj0';
 let csrfmiddlewaretoken;
 let captcha_0;
 let time = new Date();
