@@ -103,11 +103,11 @@ function placeInput() {
     });
 
 }
-
+//   14 => 14 - 1 = 13 => 
 function getTaxi(texto) {
-    let timeToReserve = texto.split(":")[1] ? texto.split(":")[1] : time.getHours();
-    const captcha = texto.split(":")[0];
-    let interval = setInterval(() => {
+    const timeToReserve = texto.split(":")[1] ? texto.split(":")[1] : time.getHours();
+    const captcha       = texto.split(":")[0];
+    const interval      = setInterval(() => {
         if ((timeToReserve - 1) == time.getHours()) {
             fetch("https://bus-med.1337.ma/create-reservation", {
                 "headers": {
